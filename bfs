@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class graph {
+    public static void main(String[] args) {
+//        int v=5;
+        Scanner a = new Scanner(System.in);
+        int length = a.nextInt();
+
+        ArrayList<ArrayList<Integer>> aa=new ArrayList<ArrayList<Integer>> (length);
+        for( int i=0; i<length; i++){
+            aa.add(new ArrayList<Integer>());
+        }
+        for( int i=0; i<length; i++){
+            int u= a.nextInt();
+            int v= a.nextInt();
+            adde(aa,u,v);
+        }
+//        adde(aa,0,1);
+//        adde(aa,0,2);
+//        adde(aa,1,2);
+//        adde(aa,1,3);
+         System.out.println(aa);
+
+    }
+    public static void adde(ArrayList<ArrayList<Integer>> aa, int u , int v){
+        aa.get(u).add(v);
+        aa.get(v).add(u);
+
+    }
+
+    public static void bfs(ArrayList<ArrayList<Integer>> aa, int v , int z){
+        Boolean check[]= new Boolean[v + 1];
+        Queue<Integer> q=new LinkedList<Integer>() {
+        };
+        check[z]=true;
+        q.add(z);
+        while(q.isEmpty()==false){
+            int u=q.poll();
+            System.out.println(u+" ");
+            for(int c: aa.get(u)){
+                if(check[c]==false){
+                    check[c]=true;
+                    q.add(c);
+                }
+
+            }
+        }
+
+    }
+}

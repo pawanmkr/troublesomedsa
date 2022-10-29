@@ -1,4 +1,5 @@
 class ZigZag {
+	//comment comment
 
 	void zigZag(int arr[], int n) {
 		// code here
